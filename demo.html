@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chibi Run Demo</title>
+<style>
+  body {
+    margin: 0;
+    background: #ffe6ec;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .runner {
+    position: fixed;
+    width: 140px;
+    height: 140px;
+    transition: transform 1s linear;
+  }
+
+  .run .leg-left {
+    animation: legLeft 0.4s infinite alternate;
+  }
+  .run .leg-right {
+    animation: legRight 0.4s infinite alternate;
+  }
+
+  .run .arm-left {
+    animation: armLeft 0.4s infinite alternate;
+  }
+  .run .arm-right {
+    animation: armRight 0.4s infinite alternate;
+  }
+
+  @keyframes legLeft {
+    from { transform: rotate(20deg); }
+    to { transform: rotate(-20deg); }
+  }
+
+  @keyframes legRight {
+    from { transform: rotate(-20deg); }
+    to { transform: rotate(20deg); }
+  }
+
+  @keyframes armLeft {
+    from { transform: rotate(-15deg); }
+    to { transform: rotate(15deg); }
+  }
+
+  @keyframes armRight {
+    from { transform: rotate(15deg); }
+    to { transform: rotate(-15deg); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- BOY -->
+<svg id="boy" class="runner run" viewBox="0 0 120 120">
+  <!-- head -->
+  <circle cx="60" cy="30" r="22" fill="#ffd6a5"/>
+  <!-- hair -->
+  <path d="M40 18 Q60 5 80 18" fill="#333"/>
+  <!-- face -->
+  <circle cx="52" cy="28" r="3"/>
+  <circle cx="68" cy="28" r="3"/>
+  <path d="M52 36 Q60 42 68 36" stroke="#000" fill="none"/>
+
+  <!-- body -->
+  <rect x="50" y="52" width="20" height="26" rx="6" fill="#8ecae6"/>
+
+  <!-- arms -->
+  <rect class="arm-left" x="40" y="54" width="10" height="24" rx="4" fill="#ffd6a5" transform-origin="45px 54px"/>
+  <rect class="arm-right" x="70" y="54" width="10" height="24" rx="4" fill="#ffd6a5" transform-origin="75px 54px"/>
+
+  <!-- legs -->
+  <rect class="leg-left" x="52" y="78" width="8" height="30" rx="4" fill="#333" transform-origin="56px 78px"/>
+  <rect class="leg-right" x="62" y="78" width="8" height="30" rx="4" fill="#333" transform-origin="66px 78px"/>
+</svg>
+
+<!-- GIRL -->
+<svg id="girl" class="runner run" viewBox="0 0 120 120">
+  <!-- head -->
+  <circle cx="60" cy="30" r="22" fill="#ffc8dd"/>
+  <!-- hair -->
+  <path d="M38 25 Q60 8 82 25 V40 H38 Z" fill="#6d597a"/>
+  <!-- face -->
+  <circle cx="52" cy="30" r="3"/>
+  <circle cx="68" cy="30" r="3"/>
+  <path d="M50 36 Q60 32 70 36" stroke="#000" fill="none"/>
+
+  <!-- dress -->
+  <path d="M48 52 L72 52 L82 90 H38 Z" fill="#ffafcc"/>
+
+  <!-- arms -->
+  <rect class="arm-left" x="38" y="54" width="10" height="24" rx="4" fill="#ffc8dd" transform-origin="43px 54px"/>
+  <rect class="arm-right" x="72" y="54" width="10" height="24" rx="4" fill="#ffc8dd" transform-origin="77px 54px"/>
+
+  <!-- pan -->
+  <circle cx="85" cy="60" r="6" fill="#999"/>
+  <rect x="85" y="58" width="14" height="4" fill="#666"/>
+
+  <!-- legs -->
+  <rect class="leg-left" x="54" y="86" width="8" height="24" rx="4" fill="#333" transform-origin="58px 86px"/>
+  <rect class="leg-right" x="64" y="86" width="8" height="24" rx="4" fill="#333" transform-origin="68px 86px"/>
+</svg>
+
+<script>
+const boy = document.getElementById("boy");
+const girl = document.getElementById("girl");
+
+function move() {
+  const x = Math.random() * (window.innerWidth - 150);
+  const y = Math.random() * (window.innerHeight - 150);
+
+  boy.style.transform = `translate(${x}px, ${y}px)`;
+  girl.style.transform = `translate(${x - 60}px, ${y - 20}px)`;
+}
+
+setInterval(move, 1200);
+</script>
+
+</body>
+</html>
